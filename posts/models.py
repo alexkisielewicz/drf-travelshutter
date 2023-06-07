@@ -11,8 +11,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=100)
-    category = models.CharField(choices=POST_CATEGORIES, max_length=20, default="travel")
-    hashtags = models.CharField(max_length=100, blank=True)
+    category = models.CharField(choices=POST_CATEGORIES, max_length=20)
     exif = models.CharField(max_length=150, blank=True)
     body = models.TextField(blank=True)
     image = models.ImageField(
@@ -20,13 +19,6 @@ class Post(models.Model):
         default='../default_post_hc3mjm',
         blank=True
     )
-    
-    def format_hashtags(self, *args, **kwargs):
-        # Split the input hashtags by commas and remove any leading/trailing spaces
-        hashtags = [hashtag.strip() for hashtag in self.hashtags.split(',') if hashtag.strip()]
-        super().save(*args, **kwargs)
-        self.hashtags.set(hashtags)
-        
     
     class Meta:
         ordering = ['-created_at']
