@@ -13,11 +13,11 @@ class PostSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
              "Image size is larger than 2 MB!"   
             )
-        if value.width > 2048:
+        if value.image.width > 2500:
             raise serializers.ValidationError(
              "Image width is larger than 2048px!"   
             )
-        if value.height > 2048:
+        if value.image.height > 2500:
             raise serializers.ValidationError(
              "Image height is larger than 2048px!"   
             )    
@@ -41,7 +41,6 @@ class PostSerializer(serializers.ModelSerializer):
             "updated_at",
             "title",
             "category",
-            "hashtags",
             "exif",
             "body",
             "image",
