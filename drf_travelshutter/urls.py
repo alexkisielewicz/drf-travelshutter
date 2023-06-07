@@ -22,4 +22,6 @@ urlpatterns = [
     path('', RootView.as_view()),
     path('api-auth/', include('rest_framework.urls')),
     path('', include('profiles.urls')),
+    path('', include('posts.urls')),
+    
 ]
