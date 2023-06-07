@@ -42,6 +42,7 @@ class PostSerializer(serializers.ModelSerializer):
             "title",
             "category",
             "hashtags",
+            "exif",
             "body",
             "image",
         ]

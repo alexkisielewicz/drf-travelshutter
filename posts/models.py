@@ -13,6 +13,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     category = models.CharField(choices=POST_CATEGORIES, max_length=20, default="travel")
     hashtags = models.CharField(max_length=100, blank=True)
+    exif = models.CharField(max_length=150, blank=True)
     body = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/', 
