@@ -20,5 +20,6 @@ from .views import RootView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RootView.as_view()),
+    path('api-auth/', include('rest_framework.urls')),
     path('', include('profiles.urls')),
 ]
