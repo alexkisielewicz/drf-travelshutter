@@ -48,21 +48,23 @@ class PostList(generics.ListCreateAPIView):
         'category',
     ]
     
-    def create_post(self, request, *args, **kwargs):
+    def create(self, request, *args, **kwargs):
         """
-        Method to create post with assigned post owner as instance
-        of the user, together with tags as a string with lowercase words 
-        separated by commas.
+        Create a post with the assigned post owner as 
+        the user instance, along with tags as string.
+        Tags are formatted to be unique, lowercase words,
+        separated with commas.
         """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         # Retrieve tags data from the request
         tags = request.data.get("tags", "")  
-        # Split the tags string into individual lowercase tags
+        # Split the tags string into individual lowercase tags separated with ","
         tag_list = [tag.strip().lower() for tag in tags.split(",") if tag.strip()]
-        tag_string = ", ".join(tag_list)
-        # Save the post with assigned owner and formated tags
-        post = serializer.save(owner=self.request.user, tags=tag_string)
+        tag_str = ", ".join(tag_list)
+        unique_tag_str = ", ".join(set(tag_list))
+        # Save the post with assigned owner as user instance and tag string
+        post = serializer.save(owner=self.request.user, tags=unique_tag_str)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     
