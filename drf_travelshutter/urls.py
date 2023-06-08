@@ -21,8 +21,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RootView.as_view()),
     path('api-auth/', include('rest_framework.urls')),
+    
+    # apps urls paths
     path('', include('profiles.urls')),
     path('', include('posts.urls')),   
     path('', include('comments.urls')),   
     path('', include('likes.urls')),
+    path('', include('followers.urls')),
 ]
