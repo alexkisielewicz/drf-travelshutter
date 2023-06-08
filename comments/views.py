@@ -10,6 +10,7 @@ class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     
     def perform_create(self, serializer):
+        # save comment instance to db and asign owner
         serializer.save(owner=self.request.user)
 
 
