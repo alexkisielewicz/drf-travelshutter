@@ -34,6 +34,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             "name",
             "bio",
             "instagram",
+            "equipment",
             "created_at",
             "updated_at",
             "content",
