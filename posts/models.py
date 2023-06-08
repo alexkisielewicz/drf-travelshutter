@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tags.models import Tag
 from .constants import POST_CATEGORIES
 
 class Post(models.Model):
@@ -12,6 +13,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=100)
     category = models.CharField(choices=POST_CATEGORIES, max_length=20)
+    tags = models.CharField(max_length=200, blank=True)
     exif = models.CharField(max_length=150, blank=True)
     body = models.TextField(blank=True)
     image = models.ImageField(
