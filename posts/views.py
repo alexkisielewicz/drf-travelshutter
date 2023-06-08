@@ -1,4 +1,5 @@
-from rest_framework import generics, permissions, filters
+from rest_framework import status, generics, permissions, filters
+from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Post
 from .serializers import PostSerializer
@@ -47,9 +48,23 @@ class PostList(generics.ListCreateAPIView):
         'category',
     ]
     
-    def create_post(self, serializer):
-        # method to assign owner to the post before save
-        serializer.save(owner=self.request.user)
+    def create_post(self, request, *args, **kwargs):
+        """
+        Method to create post with assigned post owner as instance
+        of the user, together with tags as a string with lowercase words 
+        separated by commas.
+        """
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        # Retrieve tags data from the request
+        tags = request.data.get("tags", "")  
+        # Split the tags string into individual lowercase tags
+        tag_list = [tag.strip().lower() for tag in tags.split(",") if tag.strip()]
+        tag_string = ", ".join(tag_list)
+        # Save the post with assigned owner and formated tags
+        post = serializer.save(owner=self.request.user, tags=tag_string)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
     
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
