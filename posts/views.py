@@ -12,23 +12,28 @@ class PostList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Post.objects.annotate(
         comments_count=Count(
-            'comment',
+            "comment",
             distinct=True
         ),
         likes_count=Count(
-            'likes',
+            "likes",
             distinct=True
         )
-    ).order_by('-created_at')
+    ).order_by("-created_at")
     filter_backends = [
         filters.OrderingFilter,
-        # filters.SearchFilter,
-        # DjangoFilterBackend,
+        filters.SearchFilter,
     ]
+    search_fields = [
+        "owner__username",
+        "title",
+        "category",
+    ]
+        
     ordering_fields = [
-        'comments_number',
-        'likes_number',
-        'likes__created_at',
+        "comments_number",
+        "likes_number",
+        "likes__created_at",
     ]
     
     def create_post(self, serializer):
@@ -42,11 +47,11 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     queryset = Post.objects.annotate(
         comments_count=Count(
-            'comment',
+            "comment",
             distinct=True
         ),
         likes_count=Count(
-            'likes',
+            "likes",
             distinct=True
         )
-    ).order_by('-created_at')
+    ).order_by("-created_at")
