@@ -18,7 +18,7 @@ def format_tags(tags):
 
 
 class PostList(generics.ListCreateAPIView):
-    # render create post form
+    # Render create post form
     serializer_class = PostSerializer
     # user has to be logged in in order to create posts
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

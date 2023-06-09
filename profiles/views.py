@@ -7,7 +7,7 @@ from .serializers import ProfileSerializer
 
 class ProfileList(generics.ListAPIView):
     """
-    List of all profiles.
+    List of all profiles build with generic view.
     """
     queryset = Profile.objects.annotate(
         posts_count=Count('owner__post', distinct=True),

@@ -15,6 +15,7 @@ class Post(models.Model):
     tags = models.CharField(max_length=100)
     exif = models.CharField(max_length=150, blank=True)
     body = models.TextField(blank=True)
+    # set image placeholder if user don't provide image
     image = models.ImageField(
         upload_to='images/', 
         default='../default_post_hc3mjm',

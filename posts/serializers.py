@@ -3,6 +3,12 @@ from .models import Post
 from likes.models import Like
 
 class PostSerializer(serializers.ModelSerializer):
+    """
+    A class for Post serializer. 
+    Validation of uploading image is applied
+    to make sure file doesn't exceed 2MB size,
+    or 2500px width and height. 
+    """
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="owner.profile.id")
