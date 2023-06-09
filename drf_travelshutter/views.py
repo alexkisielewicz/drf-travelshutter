@@ -7,7 +7,7 @@ from .settings import (
 
 
 @api_view()
-def RootView(request):
+def root(request):
     return Response({
         'status': 200,
         'message': 'Welcome to TravelShutter API!',
