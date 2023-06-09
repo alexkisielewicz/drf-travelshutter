@@ -40,10 +40,11 @@ REST_FRAMEWORK = {
     "DATETIME_FORMAT": "%d %B %Y",
 }
 
-# if "DEV" not in os.environ:
-#     REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
-#         "rest_framework.renderers.JSONRenderer",
-#     ]
+# Default JSON renderer in the production
+if "DEV" not in os.environ:
+    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
+        "rest_framework.renderers.JSONRenderer",
+    ]
     
 
 REST_USE_JWT = True
@@ -70,7 +71,6 @@ DEBUG = "DEV" in os.environ
 
 ALLOWED_HOSTS = [
     "localhost",
-    "127.0.0.1",
     os.environ.get('ALLOWED_HOST'), 
     ]
 
@@ -204,6 +204,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static") 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
