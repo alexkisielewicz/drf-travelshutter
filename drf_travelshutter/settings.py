@@ -30,27 +30,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [(
+        # sessions in development
         'rest_framework.authentication.SessionAuthentication'
         if 'DEV' in os.environ
+        # tokens in production
         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     )],
-    "DEFAULT_PAGINATION_CLASS":
-        "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 10,
-    "DATETIME_FORMAT": "%d %B %Y",
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'DATETIME_FORMAT': '%d %B %Y',
 }
-
-# Default JSON renderer in the production
-if "DEV" not in os.environ:
-    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
-        "rest_framework.renderers.JSONRenderer",
+if 'DEV' not in os.environ:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+        'rest_framework.renderers.JSONRenderer',
     ]
-    
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
-JWT_AUTH_COOKIE = 'travelshutter-auth'
-JWT_AUTH_REFRESH_COOKIE = 'travelshutter-refresh'
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
@@ -68,13 +67,6 @@ SECRET_KEY = {
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEV" in os.environ
-
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    ".herokuapp.com", 
-    ]
-
 
 # Application definition
 
@@ -107,6 +99,7 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -118,22 +111,26 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+ALLOWED_HOSTS = [
+    os.environ.get('ALLOWED_HOST'),
+    '127.0.0.1',
+    'localhost',
+]
+
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
         os.environ.get('CLIENT_ORIGIN')
     ]
-else:
+
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(
+        r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE
+    ).group(0)
     CORS_ALLOWED_ORIGIN_REGEXES = [
-        r"^https://.*\.gitpod\.io$",
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
     ]
 
 CORS_ALLOW_CREDENTIALS = True
-ROOT_URLCONF = 'drf_travelshutter.urls'
-
-JWT_AUTH_COOKIE = 'travelshutter-auth'
-JWT_AUTH_REFRESH_COOKE = 'travelshutter-refresh-token'
-JWT_AUTH_SAMESITE = 'None'
-
 
 TEMPLATES = [
     {
@@ -150,6 +147,8 @@ TEMPLATES = [
         },
     },
 ]
+
+ROOT_URLCONF = 'drf_travelshutter.urls'
 
 WSGI_APPLICATION = 'drf_travelshutter.wsgi.application'
 
