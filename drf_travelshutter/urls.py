@@ -18,7 +18,7 @@ from django.urls import path, include
 from .views import RootView, logout_route
 
 urlpatterns = [
-    path('', RootView.as_view()),
+    path('', RootView),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('dj-rest-auth/logout/', logout_route),
