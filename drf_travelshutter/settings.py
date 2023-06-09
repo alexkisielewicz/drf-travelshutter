@@ -72,7 +72,7 @@ DEBUG = "DEV" in os.environ
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "drf-travelshutter.herokuapp.com" 
+    ".herokuapp.com", 
     ]
 
 
