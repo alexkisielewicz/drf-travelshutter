@@ -1,4 +1,3 @@
-from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .settings import (
@@ -6,20 +5,20 @@ from .settings import (
     JWT_AUTH_SECURE,
 )
 
-class RootView(APIView):
-    def get(self, request):
-        data = {
-            'message': 'Welcome to TravelShutter API!',
+
+@api_view()
+def RootView(request):
+    return Response({
+        'status': 200,
+        'message': 'Welcome to TravelShutter API!',
             'endpoints': {
                 'profiles': '/profiles',
                 'posts': '/posts',
                 'comments': '/comments',
                 'likes': '/likes',
-                'followers': '/followers',
+                'followers': '/followers'
             }
-        }
-        return Response(data)
-    
+        })
     
 # dj-rest-auth logout view fix
 @api_view(['POST'])
