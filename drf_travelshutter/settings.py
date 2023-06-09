@@ -40,10 +40,10 @@ REST_FRAMEWORK = {
     "DATETIME_FORMAT": "%d %B %Y",
 }
 
-if "DEV" not in os.environ:
-    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
-        "rest_framework.renderers.JSONRenderer",
-    ]
+# if "DEV" not in os.environ:
+#     REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
+#         "rest_framework.renderers.JSONRenderer",
+#     ]
     
 
 REST_USE_JWT = True
