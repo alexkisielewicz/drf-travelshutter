@@ -1,10 +1,20 @@
-from rest_framework import status, generics, permissions, filters
-from rest_framework.response import Response
+from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Post
 from .serializers import PostSerializer
 from drf_travelshutter.permissions import IsOwnerOrReadOnly
 from django.db.models import Count
+
+
+def format_tags(tags):
+    """
+    Function to format tags by removing duplicates,
+    sorting alphabetically, and joining with commas.
+    """
+    tags = tags.lower().replace(',', ' ').split()
+    unique_tags = sorted(set(tags))
+    formatted_tags = ', '.join(unique_tags)
+    return formatted_tags
 
 
 class PostList(generics.ListCreateAPIView):
@@ -42,31 +52,20 @@ class PostList(generics.ListCreateAPIView):
     ]
     
     filterset_fields = [
-        'owner__followed__owner__profile',
-        'likes__owner__profile',
-        'owner__profile',
-        'category',
+        "owner__followed__owner__profile",
+        "likes__owner__profile",
+        "owner__profile",
+        "category",
     ]
     
-    def create(self, request, *args, **kwargs):
+    def perform_create(self, serializer):
         """
-        Create a post with the assigned post owner as 
-        the user instance, along with tags as string.
-        Tags are formatted to be unique, lowercase words,
-        separated with commas.
+        Method to save post instance with assigned
+        user as owner and formatted tags.
         """
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        # Retrieve tags data from the request
-        tags = request.data.get("tags", "")  
-        # Split the tags string into individual lowercase tags separated with ","
-        tag_list = [tag.strip().lower() for tag in tags.split(",") if tag.strip()]
-        tag_str = ", ".join(tag_list)
-        unique_tag_str = ", ".join(set(tag_list))
-        # Save the post with assigned owner as user instance and tag string
-        post = serializer.save(owner=self.request.user, tags=unique_tag_str)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
+        tags = self.request.data.get('tags', '')
+        formatted_tags = format_tags(tags)
+        serializer.save(owner=self.request.user, tags=formatted_tags)
     
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -83,3 +82,11 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
             distinct=True
         )
     ).order_by("-created_at")
+    
+    def perform_update(self, serializer):
+        """
+        Method to update post instance with formatted tags.
+        """
+        tags = self.request.data.get('tags', '')
+        formatted_tags = format_tags(tags)
+        serializer.save(tags=formatted_tags)

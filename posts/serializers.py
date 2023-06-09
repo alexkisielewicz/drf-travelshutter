@@ -1,9 +1,6 @@
 from rest_framework import serializers
 from .models import Post
 from likes.models import Like
-from tags.models import Tag
-from tags.serializers import TagSerializer
-
 
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
@@ -13,7 +10,7 @@ class PostSerializer(serializers.ModelSerializer):
     comments_count = serializers.ReadOnlyField()
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
-    tags = serializers.CharField(max_length=200, required=False)
+    tags = serializers.CharField()
     
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -30,7 +27,6 @@ class PostSerializer(serializers.ModelSerializer):
             )    
         return value
         
-    
     def get_is_owner(self, obj):
         # check post ownership
         request = self.context["request"]
@@ -43,7 +39,7 @@ class PostSerializer(serializers.ModelSerializer):
                 owner=user, post=obj
             ).first()
             return like.id if like else None
-        return None
+        return None 
     
     class Meta:
         model = Post
