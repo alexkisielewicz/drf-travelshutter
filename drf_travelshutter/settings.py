@@ -98,7 +98,6 @@ INSTALLED_APPS = [
     
     # own apps
     'profiles',
-    'tags',
     'posts',
     'comments',
     'likes',
