@@ -41,7 +41,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d %B %Y',
 }
-if 'DEV' not in os.environ:
+if 'DEV' in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
     ]
@@ -67,7 +67,7 @@ SECRET_KEY = {
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = "DEV" in os.environ
-# DEBUG = True
+DEBUG = True
 
 # Application definition
 
