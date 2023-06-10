@@ -112,7 +112,6 @@ MIDDLEWARE = [
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
-    "8000-alexkisiele-drftravelsh-gvbes0rfe77.ws-eu99.gitpod.io",
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
