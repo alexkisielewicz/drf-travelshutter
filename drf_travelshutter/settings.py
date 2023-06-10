@@ -66,7 +66,8 @@ SECRET_KEY = {
 }
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = "DEV" in os.environ
+# DEBUG = "DEV" in os.environ
+# DEBUG = True
 
 # Application definition
 
@@ -115,6 +116,7 @@ ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     '127.0.0.1',
     'localhost',
+    "8000-alexkisiele-drftravelsh-gvbes0rfe77.ws-eu99.gitpod.io",
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
