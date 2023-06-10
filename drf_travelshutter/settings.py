@@ -41,7 +41,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d %B %Y',
 }
-if 'DEV' in os.environ:
+if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
     ]
@@ -56,22 +56,19 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'drf_travelshutter.serializers.CurrentUserSerializer'
 }
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = {
-    'SECRET_KEY': os.environ.get('SECRET_KEY')
-}
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = "DEV" in os.environ
-DEBUG = True
+DEBUG = 'DEV' in os.environ
 
 # Application definition
 
 INSTALLED_APPS = [
+    # third party apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -114,7 +111,6 @@ MIDDLEWARE = [
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
-    '127.0.0.1',
     'localhost',
     "8000-alexkisiele-drftravelsh-gvbes0rfe77.ws-eu99.gitpod.io",
 ]
@@ -133,6 +129,8 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
     ]
 
 CORS_ALLOW_CREDENTIALS = True
+    
+ROOT_URLCONF = 'drf_travelshutter.urls'
 
 TEMPLATES = [
     {
@@ -150,8 +148,6 @@ TEMPLATES = [
     },
 ]
 
-ROOT_URLCONF = 'drf_travelshutter.urls'
-
 WSGI_APPLICATION = 'drf_travelshutter.wsgi.application'
 
 
@@ -159,7 +155,6 @@ WSGI_APPLICATION = 'drf_travelshutter.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 if 'DEV' in os.environ:
-    # in development
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -167,11 +162,9 @@ if 'DEV' in os.environ:
         }
     }
 else:
-    # in production
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
