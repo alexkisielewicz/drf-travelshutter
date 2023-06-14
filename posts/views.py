@@ -1,9 +1,12 @@
 from rest_framework import generics, permissions, filters
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Post
-from .serializers import PostSerializer
+from .serializers import PostSerializer, CategorySerializer
 from drf_travelshutter.permissions import IsOwnerOrReadOnly
 from django.db.models import Count
+from .constants import POST_CATEGORIES
 
 
 def format_tags(tags):
@@ -90,3 +93,14 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
         tags = self.request.data.get('tags', '')
         formatted_tags = format_tags(tags)
         serializer.save(tags=formatted_tags)
+        
+        
+class CategoryList(APIView):
+    def get(self, request):
+        """
+        Retrieve the list of all available categories. 
+        Loop throught the POST_CATEGORIES to retrieve
+        second element from each tuple.
+        """
+        categories = [category[1] for category in POST_CATEGORIES]
+        return Response({"Category list": categories})

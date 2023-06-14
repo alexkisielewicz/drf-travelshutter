@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Post
 from likes.models import Like
+from .constants import POST_CATEGORIES
 
 class PostSerializer(serializers.ModelSerializer):
     """
@@ -67,3 +68,12 @@ class PostSerializer(serializers.ModelSerializer):
             'comments_count',
             'likes_count',
         ]
+        
+class CategorySerializer(serializers.Serializer):
+    categories = serializers.SerializerMethodField()
+
+    def get_categories(self, obj):
+        return [category[1] for category in POST_CATEGORIES]
+
+    class Meta:
+        fields = ['categories']
