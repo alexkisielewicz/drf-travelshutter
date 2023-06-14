@@ -17,7 +17,8 @@ def root(request):
                 'posts': '/posts',
                 'comments': '/comments',
                 'likes': '/likes',
-                'followers': '/followers'
+                'followers': '/followers',
+                'categories': '/categories'
             }
         })
     
