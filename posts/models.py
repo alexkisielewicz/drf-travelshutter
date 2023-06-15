@@ -14,7 +14,7 @@ class Post(models.Model):
     category = models.CharField(choices=POST_CATEGORIES, max_length=20)
     tags = models.CharField(max_length=100)
     exif = models.CharField(max_length=150, blank=True)
-    body = models.TextField(blank=True)
+    body = models.TextField(max_length=300, blank=True)
     # set image placeholder if user don't provide image
     image = models.ImageField(
         upload_to='images/', 
