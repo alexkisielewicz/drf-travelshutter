@@ -4,7 +4,7 @@
 
 <br>
 
-![logo](docs/img/logo.png)
+![logo](docs/img/logo_api.png)
 
 **Developer:** Aleksander Kisielewicz
 
