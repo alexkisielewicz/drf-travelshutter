@@ -25,7 +25,6 @@ Project purpose was to build a back-end application that provides data and full 
   - [Python libraries/modules](#python-librariesmodules)
 - [Testing](#testing)
   - [Manual testing](#manual-testing)
-  - [Bugs/known issues](#bugsknown-issues)
 - [Deployment](#deployment)
   - [Database](#database-elephangsql)
   - [Cloudinary](#cloudinary)
@@ -301,16 +300,7 @@ If I had more time or decide to develop app further I would add/improve followin
 
 ## Code
 
-- send_email.js - basic configuration was done as in Code Institute walkthrough and then further developed,
-- in order to implement gravatar I used method suggested in [gravatar docs](https://en.gravatar.com/site/implement), that required to create and register custom template tag as described in [django docs](https://docs.djangoproject.com/en/4.1/howto/custom-template-tags/),
-- idea for counters animation on the main page found in [this snippet](https://bootsnipp.com/snippets/5K6WW),
-- patterns for regular expressions used for input validaiton found [here](https://html.form.guide/snippets/javascript-form-validation-using-regular-expression/).
-
-## Media
-
-- [Photos Pawel Zygmunt](https://www.breakinglightpictures.com/) - thanks to my friend Pawel for 3 photos from Tenerife, Connemara and Dolomites.  
-- [Alek Kisielewicz Photography](https://www.facebook.com/alex.perfect.photo) - all other post images are my own photographs.
-- [Pexels.com](https://www.pexels.com) - post placeholder image/background image/accounts background.
+This broject was bult based on the Code Institute walkthrough project - Django Rest Framework for front-edn Moments app.
 
 ## Learning resources
 
@@ -320,8 +310,7 @@ If I had more time or decide to develop app further I would add/improve followin
 - [Django](https://www.djangoproject.com/) - Django documentation.
 - [DjangoRestFramework](https://www.django-rest-framework.org/) - DRF documentation.
 
-
 ## Acknowledgements
 
-- My Mentor Reuben Ferrante for helpful feedback and guidance at all stages of the project.
+- My Mentor Jubril Akolade for helpful feedback and guidance at all stages of the project.
 - Code Institute Slack Community for being invaluable knowledge base.
