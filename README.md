@@ -4,6 +4,8 @@
 
 <br>
 
+![logo](docs/img/logo.png)
+
 **Developer:** Aleksander Kisielewicz
 
 **[View live api here](https://drf-travelshutter.herokuapp.com/)** :computer:
