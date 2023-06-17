@@ -14,7 +14,7 @@ TravelShutter API was developed as a part of Portfolio Project #5 (advanced fron
 
 Project purpose was to build a back-end application that provides data and full CRUD (create, read, update, delete) functionality to React front-end application.
 
-- Deployed front-end: [travelshutter.herokuapp.com](https://travel-shutter.herokuapp.com/)
+- Deployed front-end: [travel-shutter.herokuapp.com](https://travel-shutter.herokuapp.com/)
 - Front-end repo: [github](https://github.com/alexkisielewicz/travel-shutter)
 
 # Table of content
