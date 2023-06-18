@@ -70,7 +70,7 @@ By using agile methodology, I was able to stay organized and focused on deliveri
 | Comments app | [#17](https://github.com/alexkisielewicz/drf-travelshutter/issues/17) As a user, I want to be able to see the total number of comments I have posted. |
 | Comments app | [#18](https://github.com/alexkisielewicz/drf-travelshutter/issues/18) As a user, I want to be able to view the details of a specific comment, including its content, creation time, and the associated post. |
 | Likes app | [#19](https://github.com/alexkisielewicz/drf-travelshutter/issues/19) As a user, I can post a "like" or remove it for a specific post. |
-| Likes app | [#20](https://github.com/alexkisielewicz/drf-travelshutter/issues/20) When I view a post, I can see the list of likes it has received with details such as users who added likes, and time added. |
+| Likes app | [#20](https://github.com/alexkisielewicz/drf-travelshutter/issues/20) As a user, I can view the list of likes that posts received with details such as users who added likes, and time added. |
 | Followers app | [#21](https://github.com/alexkisielewicz/drf-travelshutter/issues/21) As a user, I want to be able to follow other users and see who is following me.) |
 | Followers app | [#23](https://github.com/alexkisielewicz/drf-travelshutter/issues/23) As a user, I want to be able how many users follow me, and also how many users I follow, so I can keep track of the popularity of my profile.) |
 
