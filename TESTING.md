@@ -14,7 +14,6 @@
 | As a user, I want to be able to filter posts by provided fields, so that I can see posts related to specific criteria. | PASS |
 | As a user, I want to be able to search for posts by their title or content, so that I can find posts that contain specific keywords. | PASS |
 | As a user, I want to be able to upload an image for a post and have it displayed along with other post details. | PASS |
-| As a user I want to be able to add tags to my posts and be able to display tagged posts so I can easily find the content that I'm interested in. | Adding tags is possible, they are stored as a string with comma-separated words. Adding separate tags with many-to-many relations has beed marked as possible future enchancement. That would allow for e.g. searching tagged posts. |
 | As a user, I want to be able to add a comment to a specific post. | PASS |
 | As a user, I want to be able to edit the comments that I have posted. | PASS |
 | As a user, I want to be able to delete a comment that I have posted. | PASS |
@@ -24,6 +23,12 @@
 | As a user, I can view the list of likes that posts received with details such as users who added likes, and time added. | PASS |
 | As a user, I want to be able to follow other users and see who is following me. | PASS |
 | As a user, I want to be able to see how many users follow me, and also how many users I follow, so I can keep track of the popularity of my profile. | PASS |
+
+User story marked as possible future enchancement: 
+
+| User story   | Comment |
+|--------------|-------------|
+| As a user I want to be able to add tags to my posts and be able to display tagged posts so I can easily find the content that I'm interested in. | Adding tags is possible, they are stored as a string with comma-separated words. Adding separate tags with many-to-many relations has beed marked as possible future enchancement. That would allow for e.g. searching tagged posts |
 
 
 # Model tests (CRUD operations, input validation, relationships, logic)
