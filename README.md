@@ -27,6 +27,7 @@ Project purpose was to build a back-end application that provides data and full 
   - [Python libraries/modules](#python-librariesmodules)
 - [Testing](#testing)
   - [Manual testing](#manual-testing)
+- [Bugs/known issues](#bugsknown-issues)
 - [Deployment](#deployment)
   - [Database](#database-elephangsql)
   - [Cloudinary](#cloudinary)
@@ -150,6 +151,16 @@ Model followers
 - [pygraphviz](https://pypi.org/project/pygraphviz/) - used to generate visualization of database model
 - [PyJWT](https://pypi.org/project/PyJWT/) - JSON Web Token implementation in Python
 - [Pillow](https://pillow.readthedocs.io/en/stable/index.html) - Pillow adds image processing capabilities to Python interpreter
+
+# Bugs/known issues
+
+- Issue: [#24](https://github.com/alexkisielewicz/drf-travelshutter/issues/24) Post serializer issue with profile_image field
+
+An issue was found in PostSerializer class in posts/serializers.py. The read-only field profile_image for the PostSerializer class contains the wrong value "profile.profile.image.url". This didn't allow the serializer to access the URL of the profile image belonging to the owner of the post and display the image as intended.
+
+![Bug](docs/img/bug1.png)
+
+Bug was fixed by changing profile_image field to serializers.ReadOnlyField(source="owner.profile.image.url").
 
 # Testing
 
