@@ -73,6 +73,11 @@ class CategorySerializer(serializers.Serializer):
     categories = serializers.SerializerMethodField()
 
     def get_categories(self, obj):
+        """
+        Iterate through POST_CATEGORIES dict and retrieve 
+        second element from each item and return
+        list of categories
+        """
         return [category[1] for category in POST_CATEGORIES]
 
     class Meta:
