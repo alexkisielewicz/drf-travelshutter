@@ -4,7 +4,7 @@ from rest_framework import permissions
 class IsOwnerOrReadOnly(permissions.BasePermission):
     """
     Permission class to ensure that only profile owner
-    can update the profile. 
+    can update the profile.
     """
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
