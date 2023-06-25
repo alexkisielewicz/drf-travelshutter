@@ -1,3 +1,10 @@
+# Table of content
+- [User stories tests](#user-stories-tests)
+- [Model tests, CRUD operations, input validation, relationships, logic](#model-tests-crud-operations-input-validation-relationships-logic)
+- [PEP8 Validation](#pep8-validation)
+
+<hr>
+
 # User stories tests
 
 | User story   | Test Result |
@@ -104,3 +111,13 @@ User story marked as possible future enchancement:
 | Test unauthorized following and unfollowing     | As unauthorized user attempt to follow any user                                  | Follow or unfollow is not available | PASS |
 | Test "unique_together" relationship             | Log in, follow specific user and attempt to follow the same user again           | Second follow request is denied and "possible duplicate" message is displayed | PASS |
 | Test followers and followint count              | Check /profile list view and profile detailed view if followers count and following count display correct values | Followers and following count are displayed in both views and shows correct values | PASS | 
+
+# PEP8 Validation
+
+All files has been linted using [PEP8 Linter](https://pep8ci.herokuapp.com/) created by Code Institute. 
+
+Minor mistakes such as trailing whitespaces, double empty line between classes or missing empty line at the end of the file, have been corrected, all warnings haved been cleared out.
+
+Syntax and indentation errors were fixed in the IDE as they arises during development stage.
+
+Please note that settings.py file includes couple of lines that are too long but breaking them would cause fail in heroku deployment. This is third party django code. 
