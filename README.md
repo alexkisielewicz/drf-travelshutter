@@ -302,7 +302,7 @@ If I had more time or decide to develop app further I would add/improve followin
 
 ## Code
 
-This broject was bult based on the Code Institute walkthrough project - Django Rest Framework for front-edn Moments app.
+This broject was built based on the Code Institute walkthrough project - Django Rest Framework for front-edn Moments app.
 
 ## Learning resources
 
