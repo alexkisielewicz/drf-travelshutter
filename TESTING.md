@@ -116,6 +116,8 @@ User story marked as possible future enchancement:
 
 All files has been linted using [PEP8 Linter](https://pep8ci.herokuapp.com/) created by Code Institute. 
 
+![PEP8 linter](docs/img/pep8linter.png)
+
 Minor mistakes such as trailing whitespaces, double empty line between classes or missing empty line at the end of the file, have been corrected, all warnings haved been cleared out.
 
 Syntax and indentation errors were fixed in the IDE as they arises during development stage.
