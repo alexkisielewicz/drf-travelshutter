@@ -79,7 +79,7 @@ By using agile methodology, I was able to stay organized and focused on deliveri
 
 ## Data model ad database structure
 
-Project uses cloud-based PostgreSQL database provided by [ElephantSQL](https://www.elephantsql.com/) as a service. ElephantSQL is known for its ease of use, reliability, and is a popular choice for Django projects that requires PostgreSQL database. It offers web interface with console for SQL queries. Database URL including API key is stored as enviromental variable in heroku.
+Project uses cloud-based PostgreSQL database provided by [ElephantSQL](https://www.elephantsql.com/) as a service. ElephantSQL is known for its ease of use, reliability, and is a popular choice for Django projects that requires PostgreSQL database. It offers web interface with console for SQL queries. Database URL including API key is stored as environmental variable in heroku.
 
 To generate model diagrams I used django-extensions with [python library pygraphviz](https://medium.com/@yathomasi1/1-using-django-extensions-to-visualize-the-database-diagram-in-django-application-c5fa7e710e16). They show relationship between models.
 
@@ -189,7 +189,7 @@ App was deployed to heroku for the first time when django installation was compl
 ## Cloudinary
 
 1. Navigate to [https://cloudinary.com/](https://cloudinary.com/) and log in to your account.
-2. Navigate to dashboard/console [https://console.cloudinary.com/console/](https://console.cloudinary.com/console/) and copy API Enviroment variable starting with "cloudinary://".
+2. Navigate to dashboard/console [https://console.cloudinary.com/console/](https://console.cloudinary.com/console/) and copy your API link starting with "cloudinary://".
 3. Paste copied url into env.py file as CLOUDINARY_URL value and save the file.
 
 ```python
@@ -266,7 +266,7 @@ Note: Repository was created using Code Institute template: [https://github.com/
     python3 manage.py createsuperuser
     ```
 
-9. App can be run in gitpod enviroment using terminal command:
+9. App can be run in gitpod environment using terminal command:
 
     ```text
     python3 manage.py runserver
@@ -299,7 +299,7 @@ Note: Repository was created using Code Institute template: [https://github.com/
     web: gunicorn drf_travelshutter.wsgi
     ```
 
-6. After adding enviromental variables and editing Procfile project is ready for deployment. In Heroku app's dashboard navigate to "Deploy" tab, scroll down to "Manual deploy" section. Select main branch from dropdown menu and click on "Deploy Branch".
+6. After adding environmental variables and editing Procfile project is ready for deployment. In Heroku app's dashboard navigate to "Deploy" tab, scroll down to "Manual deploy" section. Select main branch from dropdown menu and click on "Deploy Branch".
 
 7. After built is done, you should be able to see the button with the link leading to deployed app. In my case [http://drf-travelshutter.herokuapp.com](http://drf-travelshutter.herokuapp.com).
 
@@ -307,13 +307,13 @@ Note: Repository was created using Code Institute template: [https://github.com/
 
 If I had more time or decide to develop app further I would add/improve following functionalities that I moved to olumn on project board:
 
-- [#22](https://github.com/alexkisielewicz/drf-travelshutter/issues/22) As a user I want to be able to add tags to my posts and be able to display tagged posts so I can easily find the content that I'm interested in. 
+- [#22](https://github.com/alexkisielewicz/drf-travelshutter/issues/22) As a user I want to be able to add tags to my posts and be able to display tagged posts so I can easily find the content that I'm interested in.
 
 # Credits
 
 ## Code
 
-This broject was built based on the Code Institute walkthrough project - Django Rest Framework for front-edn Moments app.
+This broject was built based on the Code Institute walkthrough project - Django Rest Framework for front-end Moments app.
 
 ## Learning resources
 
